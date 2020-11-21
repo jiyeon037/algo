@@ -11,16 +11,19 @@ answer = 999
 
 for i in range(len_teams//2):
     start_sum = 0
-    for j in range(N//2):
-        member = teams[i][j]
-        for k in teams[i]:
-            start_sum += S[member][k]
-    
     link_sum = 0
+    start_team = teams[i]
+    link_team = teams[-i-1]
+
     for j in range(N//2):
-        member = teams[-i-1][j]
-        for k in teams[-i-1]:
-            link_sum += S[member][k]
+        start_member = start_team[j]
+        link_member = link_team[j]
+
+        for k in start_team:
+            start_sum += S[start_member][k]
+    
+        for k in link_team:
+            link_sum += S[link_member][k]
 
     answer = min(answer, abs(start_sum - link_sum))
 
