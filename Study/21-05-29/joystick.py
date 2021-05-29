@@ -7,10 +7,7 @@ def solution(name):
         right = 1
         left = 1
         if name[idx] != 'A':
-            if 'A' <= name[idx] <= 'M':
-                answer += ord(name[idx]) - 65
-            else:
-                answer += 90 - ord(name[idx]) + 1
+            answer += min(ord(name[idx])-ord('A'), ord('Z')-ord(name[idx]) + 1)
             name[idx] = 'A'
 
         if name == ['A'] * len(name):
